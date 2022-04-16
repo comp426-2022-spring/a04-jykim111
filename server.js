@@ -178,14 +178,12 @@ app.use(express.json());
 
 // Use morgan for logging to files
 // ONLY IF --log = true
-if (log) {
+if (log == true) {
     // Create a write stream to append (flags: 'a') to a file
     const access_log = fs.createWriteStream('access.log', { flags: 'a' });
 
     // Set up the access logging middleware
     app.use(morgan('combined', { stream: access_log }));
-} else if (!log) {
-    console.log('Do not create log file');
 }
 
 // Middlware function that inserts a new record in a database.
