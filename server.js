@@ -177,8 +177,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Use morgan for logging to files
-// ONLY IF --log = false
-if (log == true) {
+// ONLY IF --log = true
+if (log) {
     // Create a write stream to append (flags: 'a') to a file
     const access_log = fs.createWriteStream('access.log', { flags: 'a' });
 
@@ -221,7 +221,7 @@ const server = app.listen(port, () => {
 })
 
 // WHEN DEBUG == TRUE.
-if (debug == true) {
+if (debug) {
     // endpoint for /app/log/access that returns all records in "accesslog" table in "log.db"
     app.get('/app/log/access', (req, res) => {
         try {
