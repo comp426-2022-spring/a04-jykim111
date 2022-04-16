@@ -179,9 +179,14 @@ const log = args.log;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+// Start an app server
+const server = app.listen(port, () => {
+    console.log('App listening on port %PORT%'.replace('%PORT%', port));
+})
+
 // Use morgan for logging to files
 // ONLY IF --log = false
-
 if (log == true) {
     // Create a write stream to append (flags: 'a') to a file
     const access_log = fs.createWriteStream('access.log', { flags: 'a' });
@@ -220,12 +225,6 @@ app.use((req, res, next) => {
 
     // next() to avoid hang.
     next();
-})
-
-
-// Start an app server
-const server = app.listen(port, () => {
-    console.log('App listening on port %PORT%'.replace('%PORT%', port));
 })
 
 // WHEN DEBUG == TRUE.
