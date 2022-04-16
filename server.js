@@ -184,6 +184,8 @@ if (log) {
 
     // Set up the access logging middleware
     app.use(morgan('combined', { stream: access_log }));
+} else {
+    console.log('Do not create log file');
 }
 
 // Middlware function that inserts a new record in a database.
