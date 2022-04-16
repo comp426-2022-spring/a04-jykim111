@@ -138,9 +138,6 @@ const fs = require('fs');
 // Require minimist module
 const args = require('minimist')(process.argv.slice(2));
 
-// See what is stored in the object produced by minimist
-console.log(args);
-
 // Store help text
 const help = (`
     server.js [options]
@@ -219,9 +216,6 @@ app.use((req, res, next) => {
     const info = statement.run(logdata.remoteaddr, logdata.remoteuser, logdata.time, logdata.method,
         logdata.url, logdata.protocol, logdata.httpversion, logdata.status,
         logdata.referer, logdata.useragent);
-
-    // Display the info as json.
-    res.status(200).json(info);
 
     // next() to avoid hang.
     next();
