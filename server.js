@@ -184,7 +184,7 @@ if (log) {
 
     // Set up the access logging middleware
     app.use(morgan('combined', { stream: access_log }));
-} else {
+} else if (!log) {
     console.log('Do not create log file');
 }
 
