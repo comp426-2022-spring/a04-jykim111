@@ -217,6 +217,9 @@ app.use((req, res, next) => {
 
     // Display the info as json.
     res.status(200).json(info);
+
+    // next() to avoid hang.
+    next();
 })
 
 
