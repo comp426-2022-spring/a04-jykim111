@@ -176,12 +176,6 @@ const log = args.log;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-// Start an app server
-const server = app.listen(port, () => {
-    console.log('App listening on port %PORT%'.replace('%PORT%', port));
-})
-
 // Use morgan for logging to files
 // ONLY IF --log = false
 if (log == true) {
@@ -191,7 +185,6 @@ if (log == true) {
     // Set up the access logging middleware
     app.use(morgan('combined', { stream: access_log }));
 }
-
 
 // Middlware function that inserts a new record in a database.
 app.use((req, res, next) => {
@@ -219,6 +212,12 @@ app.use((req, res, next) => {
 
     // next() to avoid hang.
     next();
+})
+
+
+// Start an app server
+const server = app.listen(port, () => {
+    console.log('App listening on port %PORT%'.replace('%PORT%', port));
 })
 
 // WHEN DEBUG == TRUE.
