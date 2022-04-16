@@ -182,7 +182,7 @@ app.use(express.json());
 // Use morgan for logging to files
 // ONLY IF --log = false
 
-if (log == false) {
+if (log == true) {
     // Create a write stream to append (flags: 'a') to a file
     const access_log = fs.createWriteStream('access.log', { flags: 'a' });
 
