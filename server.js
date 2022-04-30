@@ -252,22 +252,22 @@ app.get('/app/', (req, res) => {
 
 // Define response for coinFlip.
 app.get('/app/flip/', (req, res) => {
-    let flip = coin.coinFlip();
+    let flip = coinFlip();
     res.status(200).json({ "flip": flip });
 });
 
 
 // Define response for coinFlips with given number.
 app.get('/app/flips/:number', (req, res) => {
-    let raw = coin.coinFlips(req.params.number);
-    let summary = coin.countFlips(raw);
+    let raw = coinFlips(req.params.number);
+    let summary = countFlips(raw);
     res.status(200).json({ "raw": raw, "summary": summary });
 });
 
 
 // Define response for heads call.
 app.get('/app/flip/call/heads', (req, res) => {
-    let heads = coin.flipACoin('heads');
+    let heads = flipACoin('heads');
     let call = heads.call;
     let flip = heads.flip;
     let result = heads.result;
@@ -277,7 +277,7 @@ app.get('/app/flip/call/heads', (req, res) => {
 
 // Define response for tails call.
 app.get('/app/flip/call/tails', (req, res) => {
-    let tails = coin.flipACoin('tails');
+    let tails = flipACoin('tails');
     let call = tails.call;
     let flip = tails.flip;
     let result = tails.result;
