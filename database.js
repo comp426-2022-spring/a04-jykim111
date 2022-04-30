@@ -43,5 +43,6 @@ if (row == undefined) {
     console.log("Log database exists.");
 }
 
+
 // Export database connection.
 module.exports = logdb;
